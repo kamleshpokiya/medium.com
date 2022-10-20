@@ -12,18 +12,21 @@
 </style>
 
 <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.css')}}">
+<!-- Select2 -->
+<link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css')}}">
+<link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Article Add</h1>
+                    <h1>Add Article</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Article Add</li>
+                        <li class="breadcrumb-item active">Add Article</li>
                     </ol>
                 </div>
             </div>
@@ -53,12 +56,14 @@
                             <div class="form-group row">
                                 <label for="tag" class="col-sm-2 col-form-label">Tag Name</label>
                                 <div class="col-sm-8">
-                                    <select class="form-control" name="tag_id" id="tag_id" multiple>
-                                        <option>option 1</option>
-                                        <option>option 2</option>
-                                        <option>option 3</option>
-                                        <option>option 4</option>
-                                        <option>option 5</option>
+                                    <select class="form-control select2" multiple="multiple" style="width: 100%;" name="tag_id" id="tag_id">
+                                        <option selected="selected">Alabama</option>
+                                        <option>Alaska</option>
+                                        <option>California</option>
+                                        <option>Delaware</option>
+                                        <option>Tennessee</option>
+                                        <option>Texas</option>
+                                        <option>Washington</option>
                                     </select>
                                 </div>
                             </div>
@@ -102,9 +107,12 @@
     <!-- /.content -->
 </div>
 <script src="{{ asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
+<!-- Select2 -->
+<script src="{{ asset('plugins/select2/js/select2.full.min.js')}}"></script>
 <script>
     $(function() {
         // Summernote
+        $('.select2').select2()
         $('.textarea').summernote()
     })
 </script>

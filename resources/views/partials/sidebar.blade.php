@@ -28,8 +28,7 @@
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
-              
+                Dashboard              
               </p>
             </a>
           </li>
@@ -38,8 +37,7 @@
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
-                Articles
-                
+                Articles                
               </p>
             </a>
           </li>
@@ -48,12 +46,10 @@
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-tag"></i>
               <p>
-                Tags
-                
+                Tags                
               </p>
             </a>
           </li>
-
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
