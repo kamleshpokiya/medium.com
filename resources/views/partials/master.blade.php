@@ -18,6 +18,10 @@
   <link rel="stylesheet" href="{{asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="{{ asset('plugins/jquery/jquery.min.js')}}"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -28,10 +32,7 @@
 
     @include('partials.footer')
   </div>
-  <!-- jQuery -->
-  <script src="{{ asset('plugins/jquery/jquery.min.js')}}"></script>
-  <!-- jQuery UI 1.11.4 -->
-  <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
   <script>
     $.widget.bridge('uibutton', $.ui.button)
@@ -44,9 +45,10 @@
   <!-- AdminLTE App -->
   <script src="{{ asset('js/adminlte.js')}}"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <script src="{{ asset('js/pages/dashboard.js')}}"></script>
+  <!-- <script src="{{ asset('js/pages/dashboard.js')}}"></script> -->
   <!-- AdminLTE for demo purposes -->
   <script src="{{ asset('js/demo.js')}}"></script>
+
 </body>
 
 </html>
