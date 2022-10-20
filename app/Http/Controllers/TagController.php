@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Tage;
+use App\Models\Tag;
 
-class TageController extends Controller
+class TagController extends Controller
 {
     public function index(){
-        $tages = Tage::all();
+        $tages = Tag::all();
         return view('index', ['tages' => $tages]);
     }
     public function addtage(){
