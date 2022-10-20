@@ -26,11 +26,11 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
-    @include('partials.header')
-    @include('partials.sidebar')
+    @include('admin.partials.header')
+    @include('admin.partials.sidebar')
     @yield('content')
 
-    @include('partials.footer')
+    @include('admin.partials.footer')
   </div>
 
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

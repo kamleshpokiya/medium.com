@@ -1,4 +1,4 @@
-@extends('partials.master')
+@extends('admin.partials.master')
 
 @section('content')
 <style>
@@ -57,9 +57,9 @@
                                 <label for="tag" class="col-sm-2 col-form-label">Tag Name</label>
                                 <div class="col-sm-8">
                                     <select class="form-control select2" multiple="multiple" style="width: 100%;" name="tag_id" id="tag_id">
+                                        {{-- <option selected="selected" value="">Select Tags<option> --}}
                                         @foreach ($articals as $item)
-                            
-                                        <option selected="selected">Alabama</option>
+                                        <option value="{{$item->name}}">{{$item->name}}</option>
                                         @endforeach                                       
                                     </select>
                                 </div>
