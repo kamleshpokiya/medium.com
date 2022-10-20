@@ -9,21 +9,30 @@
     .push-top {
         margin-top: 50px;
     }
+
+    .articles {
+        border-left: 1px solid #dee2e6;
+        border-right: 1px solid #dee2e6;
+        border-bottom: 1px solid #dee2e6;
+    }
 </style>
 
 <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.css')}}">
+<!-- DataTables -->
+<link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Article Add</h1>
+                    <h1>Articles</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Article Add</li>
+                        <li class="breadcrumb-item active">Articles</li>
                     </ol>
                 </div>
             </div>
@@ -33,80 +42,188 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
+            <div class="col-12">
+                <!-- Default box -->
+                <div class="card">
+                    <div class="card-body">
+                        <table id="example2" class="table table-striped articles table-hover ">
+                            <thead>
+                                <tr>
+                                    <th style="width: 1%">
+                                        #
+                                    </th>
+                                    <th style="width: 20%">
+                                        Article Name
+                                    </th>
+                                    <th style="width: 20%">
+                                        Tags
+                                    </th>
+                                    <th>
+                                        Description
+                                    </th>
+                                    <th style="width: 8%" class="text-center">
+                                        Status
+                                    </th>
+                                    <th style="width: 20%">
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        #
+                                    </td>
+                                    <td>
+                                        AdminLTE v3
 
-            <div class="col-md-12">
-                <div class="card card-info">
-                    <!-- <div class="card-header">
-                <h3 class="card-title">Horizontal Form</h3>
-              </div> -->
-                    <!-- /.card-header -->
-                    <!-- form start -->
-                    <form class="form-horizontal">
-                        <div class="card-body">
-                            <div class="form-group row">
-                                <label for="article_name" class="col-sm-2 col-form-label">Article Name</label>
-                                <div class="col-sm-8">
-                                    <input type="text" name="article_name" class="form-control" id="article_name" placeholder="Atricle Name">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="tag" class="col-sm-2 col-form-label">Tag Name</label>
-                                <div class="col-sm-8">
-                                    <select class="form-control" name="tag_id" id="tag_id" multiple>
-                                        <option>option 1</option>
-                                        <option>option 2</option>
-                                        <option>option 3</option>
-                                        <option>option 4</option>
-                                        <option>option 5</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="file" class="col-sm-2 col-form-label">Images</label>
-                                <div class="col-sm-8">
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="file" name="file">
-                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                    </td>
+                                    <td>
+                                        Laravel
+                                    </td>
+                                    <td class="project_progress">
+                                        <div class="progress progress-sm">
+                                            <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width: 57%">
+                                            </div>
                                         </div>
+                                        <small>
+                                            57% Complete
+                                        </small>
+                                    </td>
+                                    <td class="project-state">
+                                        <span class="badge badge-success">Success</span>
+                                    </td>
+                                    <td class="project-actions text-right">
+                                        <a class="btn btn-primary btn-sm" href="#">
+                                            <i class="fas fa-folder">
+                                            </i>
+                                            View
+                                        </a>
+                                        <a class="btn btn-info btn-sm" href="#">
+                                            <i class="fas fa-pencil-alt">
+                                            </i>
+                                            Edit
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" href="#">
+                                            <i class="fas fa-trash">
+                                            </i>
+                                            Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        #
+                                    </td>
+                                    <td>
+                                        AdminLTE v3
 
-                                    </div>
-                                </div>
-                            </div>
+                                    </td>
+                                    <td>
+                                        Laravel
+                                    </td>
+                                    <td class="project_progress">
+                                        <div class="progress progress-sm">
+                                            <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width: 57%">
+                                            </div>
+                                        </div>
+                                        <small>
+                                            57% Complete
+                                        </small>
+                                    </td>
+                                    <td class="project-state">
+                                        <span class="badge badge-success">Success</span>
+                                    </td>
+                                    <td class="project-actions text-right">
+                                        <a class="btn btn-primary btn-sm" href="#">
+                                            <i class="fas fa-folder">
+                                            </i>
+                                            View
+                                        </a>
+                                        <a class="btn btn-info btn-sm" href="#">
+                                            <i class="fas fa-pencil-alt">
+                                            </i>
+                                            Edit
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" href="#">
+                                            <i class="fas fa-trash">
+                                            </i>
+                                            Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        #
+                                    </td>
+                                    <td>
+                                        AdminLTE v3
 
-                            <div class="form-group row">
-                                <label for="inputPassword3" class="col-sm-2 col-form-label">Article Description</label>
-                                <div class="col-sm-8">
-                                    <textarea class="textarea" name="description" id="description" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                                </div>
-                            </div>
+                                    </td>
+                                    <td>
+                                        Laravel
+                                    </td>
+                                    <td class="project_progress">
+                                        <div class="progress progress-sm">
+                                            <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width: 57%">
+                                            </div>
+                                        </div>
+                                        <small>
+                                            57% Complete
+                                        </small>
+                                    </td>
+                                    <td class="project-state">
+                                        <span class="badge badge-success">Success</span>
+                                    </td>
+                                    <td class="project-actions text-right">
+                                        <a class="btn btn-primary btn-sm" href="#">
+                                            <i class="fas fa-folder">
+                                            </i>
+                                            View
+                                        </a>
+                                        <a class="btn btn-info btn-sm" href="#">
+                                            <i class="fas fa-pencil-alt">
+                                            </i>
+                                            Edit
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" href="#">
+                                            <i class="fas fa-trash">
+                                            </i>
+                                            Delete
+                                        </a>
+                                    </td>
+                                </tr>
 
-                        </div>
-                        <!-- /.card-body -->
-                        <div class="col-sm-12">
-                            <div class="card-footer">
-                                <input type="submit" value="Create new Article" class="btn btn-success">
-                                <a href="#" class="btn btn-secondary">Cancel</a>
-                            </div>
-                        </div>
-                        <!-- /.card-footer -->
-                    </form>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
                 </div>
             </div>
-
         </div>
+        <!-- /.card -->
 
     </section>
     <!-- /.content -->
 </div>
 <script src="{{ asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
+<!-- DataTables -->
+<script src="{{ asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
 <script>
     $(function() {
-        // Summernote
-        $('.textarea').summernote()
-    })
+
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
 </script>
 <!-- /.content-wrapper -->
 @endsection
