@@ -8,13 +8,12 @@ use App\Models\Tag;
 class TagController extends Controller
 {
     public function index(){
-        $tages = Tag::all();
-        return view('index', ['tages' => $tages]);
+        $tags = Tag::all();
+        return view('index', ['tags' => $tags]);
     }
-    public function addtage(){
-
-    }
-    public function edittage(){
-
+    public function addtage(Request $request){
+        $tags = new tag;
+        $tags->name = $request->name;
+        $tags->save();
     }
 }

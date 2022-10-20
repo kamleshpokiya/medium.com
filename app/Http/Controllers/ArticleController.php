@@ -21,8 +21,8 @@ class ArticleController extends Controller
             $request->all(),
             [
                 'name' => 'required',
-                'email' => 'required',
-                'password' => 'required',
+                'description' => 'required',
+                'tag_id' => 'required',
                 'cpassword' => 'required',
                 'phonenumber' => 'required',
                 'dob' => 'required',
