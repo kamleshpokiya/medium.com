@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+// use App\Http\Controllers\admin\ArticleController;
+use App\Http\Controllers\admin\ArticleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +17,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('articles/create');
 });
+// Route::resource('article', ArticleController::class);
+// Route::get('/', 'Home\HomeController@index');
 
-Route::view('admin', 'dashboard');
-Route::view('login', 'login');
-Route::view('register', 'register');
+// admin/test
+Route::group(
+    array('prefix' => 'admin'), 
+    function() {
+        Route::resource('article', ArticleController::class);
+    }
+);
+
+// Route::namespace('App\Http\Controllers\admin')->prefix('admin')->name('admin.')->group(function(){
+//     Route::resource('/article', ArticleController::class);
+//     // Route::resource('/users', UsersController::class);
+// });
+

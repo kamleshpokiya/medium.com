@@ -57,13 +57,10 @@
                                 <label for="tag" class="col-sm-2 col-form-label">Tag Name</label>
                                 <div class="col-sm-8">
                                     <select class="form-control select2" multiple="multiple" style="width: 100%;" name="tag_id" id="tag_id">
+                                        @foreach ($articals as $item)
+                            
                                         <option selected="selected">Alabama</option>
-                                        <option>Alaska</option>
-                                        <option>California</option>
-                                        <option>Delaware</option>
-                                        <option>Tennessee</option>
-                                        <option>Texas</option>
-                                        <option>Washington</option>
+                                        @endforeach                                       
                                     </select>
                                 </div>
                             </div>
