@@ -1,21 +1,49 @@
 <?php
 
 namespace App\Http\Controllers;
-
+// namespace App\Http\Controllers\admin;
+// use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Tag;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Validator;
 
 class ArticleController extends Controller
 {
-    public function article(Request $request)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        $articals = Article::all();
-        return view('index', ['article' => $articals]);
+        // $tages = Tag::all();
+       
+        return view('articles/index');
+
     }
-    public function addarticle(Request $request)
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
+    {
+
+        $articals = Article::all();
+       
+
+        return view('articles/create',compact('articals'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
         $validated = Validator::make(
             $request->all(),
@@ -51,27 +79,56 @@ class ArticleController extends Controller
         $file->move(public_path('\profile_pic'), $file->getClientOriginalName());
         $obj_modal = new Article;
         $obj_modal->name = $request->name;
-        $obj_modal->email = $request->email;
 
-        $obj_modal->password = $request->password;
-        $obj_modal->phone_no = $request->phonenumber;
-        $obj_modal->dob = $request->dob;
-        $obj_modal->city = $request->city;
-        $obj_modal->vehicle = implode(',', $request->vehchles);
-        $obj_modal->gender = $request->gender;
-        $obj_modal->profile_pic = $file->getClientOriginalName();
-        $obj_modal->address = $request->address;
+       
         $obj_modal->save();
-
-        return view('/index');
     }
-    public function editarticle(Request $id)
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
         $articalid = $id;
         $recode = Article::find($id);
         return view('/editarticle', ['article' => $recode]);
     }
-    public function delatearticle($id)
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $articalid = $id;
+        $recode = Article::find($id);
+        return view('/editarticle', ['article' => $recode]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
     {
         $articalid = $id;
         $selected_emp = Article::find($articalid);
