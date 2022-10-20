@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-// namespace App\Http\Controllers\admin;
-// use App\Http\Controllers\Controller;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Article;
@@ -31,10 +30,11 @@ class ArticleController extends Controller
     public function create(Request $request)
     {
 
-        $articals = Article::all();
        
-
-        return view('articles/create',compact('articals'));
+        $articals = Tag::all();
+    
+        return view('admin/articles/create',compact('articals'));
+        // return view('articles/create',['articals'=> $articals]);
     }
 
     /**
