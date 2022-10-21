@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\admin\ArticleController;
 /*
 |--------------------------------------------------------------------------
@@ -15,26 +15,11 @@ use App\Http\Controllers\admin\ArticleController;
 */
 
 //admin routes
-Route::group(['prefix' => 'admin'], function(){
-    Route::resource('article', ArticleController::class);
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('articles', ArticleController::class);
 });
-    // Route::resource('article', ArticleController::class);
-// Route::resource('article', 'Admin\ArticleController');
-// Route::get('/', function () {
-//     return view('admin/articles/create');
-// });
-// Route::get('/', 'Home\HomeController@index');
 
-// admin/test
-// Route::group(
-//     array('prefix' => 'admin'), 
-//     function() {
-//         Route::resource('article', ArticleController::class);
-//     }
-// );
+Route::get('/', [HomeController::class, 'index']);
 
-// Route::namespace('App\Http\Controllers\admin')->prefix('admin')->name('admin.')->group(function(){
-//     Route::resource('/article', ArticleController::class);
-//     // Route::resource('/users', UsersController::class);
-// });
+
 

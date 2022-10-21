@@ -68,7 +68,9 @@
       color: inherit;
       text-decoration: none
     }
-
+    .tags{
+      margin-right: 5px !important;
+    }
     a,
     button,
     input {
@@ -1446,6 +1448,7 @@
     .lg {
       padding-top: 4px
     }
+    
   </style>
 
 </head>

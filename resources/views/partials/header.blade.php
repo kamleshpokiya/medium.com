@@ -14,56 +14,7 @@
                                     </a>
                                 </div>
                                 <div class="y bp"></div>
-                                <div class="am bq ax">
-                                    <span class="y h g br bs bt">
-                                        <div class="bu y">
-                                            <p class="bv b bw bx by">
-                                                <a class="ay az ba bb bc bd be bf bg bh bi bj bk bl bm"
-                                                    href="aboutca84.html?autoplay=1" rel="noopener follow">Our story</a>
-                                            </p>
-                                        </div>
-                                    </span>
-                                    <span class="y h g br bs bt">
-                                        <div class="bu y">
-                                            <p class="bv b bw bx by">
-                                                <a class="ay az ba bb bc bd be bf bg bh bi bj bk bl bm"
-                                                    href="membership.html" rel="noopener follow">Membership</a>
-                                            </p>
-                                        </div>
-                                    </span>
-                                    <span class="y h g br bs bt">
-                                        <div class="bu y">
-                                            <p class="bv b bw bx by">
-                                                <a class="ay az ba bb bc bd be bf bg bh bi bj bk bl bm"
-                                                    href="https://about.medium.com/creators/"
-                                                    rel="noopener follow">Write</a>
-                                            </p>
-                                        </div>
-                                    </span>
-                                    <span class="y h bz br bs bt">
-                                        <div class="bu y">
-                                            <p class="bv b bw bx by">
-                                                <span>
-                                                    <a class="ay az ba bb bc bd be bf bg bh bi bj bk bl bm"
-                                                        rel="noopener follow"
-                                                        href="m/signin5d34.html?operation=login&amp;redirect=https%3A%2F%2Fmedium.com%2F&amp;source=--------------------------lo_home_nav-----------">Sign
-                                                        In</a>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </span>
-                                    <div class="al">
-                                        <span>
-                                            <a class="ay az ba bb bc bd be bf bg bh bi bj bk bl bm"
-                                                rel="noopener follow"
-                                                href="m/signin5df2.html?operation=register&amp;redirect=https%3A%2F%2Fmedium.com%2F&amp;source=--------------------------lo_home_nav-----------">
-                                                <button
-                                                    class="bv b bw bx ca cb cc cd ce cf cg bh ch ci cj ck cl cm cn co cp cq">Get
-                                                    started</button>
-                                            </a>
-                                        </span>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>

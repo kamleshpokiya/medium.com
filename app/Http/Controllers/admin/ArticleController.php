@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Tag;
+use App\Models\Article_images;
+use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller
 {
@@ -16,10 +19,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        // $tages = Tag::all();
-       
-        return view('articles/index');
-
+        $data['articles'] = Article::where('is_delete', 0)->orderBy('id', 'desc')->paginate(10);
+        return view('admin/articles/index', $data);
     }
 
     /**
@@ -29,12 +30,8 @@ class ArticleController extends Controller
      */
     public function create(Request $request)
     {
-
-       
-        $articals = Tag::all();
-    
-        return view('admin/articles/create',compact('articals'));
-        // return view('articles/create',['articals'=> $articals]);
+        $articles = Tag::all();
+        return view('admin/articles/create', compact('articles'));
     }
 
     /**
@@ -45,43 +42,51 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = Validator::make(
-            $request->all(),
-            [
-                'name' => 'required',
-                'description' => 'required',
-                'tag_id' => 'required',
-                'cpassword' => 'required',
-                'phonenumber' => 'required',
-                'dob' => 'required',
-                'city' => 'required|not_in:0',
-                'gender' => 'required',
-                'vehchles' => 'required|array|min:1',
-                'image' => 'mimes:jpeg,jpg,png,gif|required|max:2000',
-                'address' => 'required',
-            ],
-            [
-                'name.required' => 'plase enter your name',
-                'email.required' => 'plase enter your gmail',
-                'vehchles.min' => 'plase chake atlast one',
-                'city.not_in' => 'plase select your city',
-                'image.max' => 'The image must not be greater than 2MB.',
-            ]
-        );
+        // echo '<pre>';
 
-        if ($validated->fails()) {
-            return response()->json(['errors' => $validated->getMessageBag()->toArray()]);
+        // print_r($request->all());
+        // print_r($request->tag_id);
+        // // exit;
+        $request->validate([
+            'article_name' => 'required',
+            'description' => 'required',
+            'tag_id' => 'required',
+            'image' => 'mimes:jpeg,jpg,png,gif|required|max:2000',
+            // 'image' => 'required',
+        ]);
+
+        $files = [];
+        $uploadStatus = [];
+        // DB::enableQueryLog();
+        // $items = Article::create($request->all());
+        $article = new Article;
+        $article->name = $request->article_name;
+        $article->description = $request->description;
+        $article->tag_id  = implode(',', $request->tag_id);
+
+        $article->save();
+        //         $query = DB::getQueryLog();
+        // dd($query);
+        $article_id = $article->id;
+        if ($request->hasfile('image')) {
+            foreach ($request->file('image') as $file) {
+                $name = time() . rand(1, 100) . '.' . $file->extension();
+                if ($file->move(public_path('uploads'), $name)) {
+                    $files[] = $name;
+                    $article_images = new Article_images();
+                    $article_images->article_id = $article_id;
+                    $article_images->name = $name;
+                    $uploadStatus = $article_images->save();
+                }
+            }
         }
 
-        //save data using modale
-        //profile image
-        $file = $request->file('image');
-        $file->move(public_path('\profile_pic'), $file->getClientOriginalName());
-        $obj_modal = new Article;
-        $obj_modal->name = $request->name;
-
-       
-        $obj_modal->save();
+        if ($uploadStatus) {
+            return redirect()->route('articles.index')
+                ->with('success', 'Article has been created successfully.');
+        } else {
+            return back()->with('failed', 'Alert! file not uploaded');
+        }
     }
 
     /**
@@ -92,9 +97,8 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        $articalid = $id;
         $recode = Article::find($id);
-        return view('/editarticle', ['article' => $recode]);
+        return view('admin/articles/view', compact('article', 'tags'));
     }
 
     /**
@@ -105,9 +109,9 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        $articalid = $id;
-        $recode = Article::find($id);
-        return view('/editarticle', ['article' => $recode]);
+        $article = Article::find($id);
+        $tags = Tag::all();
+        return view('admin/articles/edit', compact('article', 'tags'));
     }
 
     /**
@@ -119,7 +123,43 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'article_name' => 'required',
+            'description' => 'required',
+            'tag_id' => 'required',
+            // 'image' => 'mimes:jpeg,jpg,png,gif|required|max:2000',
+            'image' => 'required',
+        ]);
+        $article = Article::find($id);
+        $files = [];
+        $uploadStatus = [];
+        // DB::enableQueryLog();
+        // $items = Article::create($request->all());
+        $article->name = $request->article_name;
+        $article->description = $request->description;
+        $article->tag_id  = implode(',', $request->tag_id);
+        $article->save();
+        //         $query = DB::getQueryLog();
+        // dd($query);
+        if ($request->hasfile('image')) {
+            foreach ($request->file('image') as $file) {
+                $name = time() . rand(1, 100) . '.' . $file->extension();
+                if ($file->move(public_path('uploads'), $name)) {
+                    $files[] = $name;
+                    $article_images = new Article_images();
+                    $article_images->article_id = $id;
+                    $article_images->name = $name;
+                    $uploadStatus = $article_images->save();
+                }
+            }
+        }
+
+        if ($uploadStatus) {
+            return redirect()->route('articles.index')
+                ->with('success', 'Article has been created successfully.');
+        } else {
+            return back()->with('failed', 'Alert! file not uploaded');
+        }
     }
 
     /**
@@ -130,9 +170,15 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        $articalid = $id;
-        $selected_emp = Article::find($articalid);
-        $selected_emp->delete();
-        return redirect('/article');
+        if ($id != null) {
+            $article = Article::findOrFail($id);
+            $article->is_delete = 1;
+            $article->save();
+            // $article->delete();
+            return redirect()->route('articles.index')
+                ->with('success', 'Article has been deleted successfully');
+        }
+
+        return redirect()->route('articles.index')->with(['error' => 'Wrong ID!!']);
     }
 }

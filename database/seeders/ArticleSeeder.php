@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Article;
+use Faker\Factory as Faker;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class ArticleSeeder extends Seeder
 {
@@ -17,5 +20,14 @@ class ArticleSeeder extends Seeder
         Article::create([
             
         ]);
+
+        $faker = Faker::create();
+        foreach (range(1,10) as $value) {
+            DB::table('articles')->insert([
+                'name' => $faker->name(),
+                'description' => $faker->text(1000),
+                'tag_id' => Str::random(10),
+            ]);
+        }
     }
 }
