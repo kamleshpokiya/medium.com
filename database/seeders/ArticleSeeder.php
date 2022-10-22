@@ -17,16 +17,12 @@ class ArticleSeeder extends Seeder
      */
     public function run()
     {
-        Article::create([
-            
-        ]);
-
         $faker = Faker::create();
         foreach (range(1,10) as $value) {
             DB::table('articles')->insert([
                 'name' => $faker->name(),
                 'description' => $faker->text(1000),
-                'tag_id' => Str::random(10),
+                'tag_id' => $faker->randomDigitNotZero(),
             ]);
         }
     }

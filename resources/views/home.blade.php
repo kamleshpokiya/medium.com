@@ -178,7 +178,7 @@
                                                             </div>
                                                         </div>
                                                         <?php
-                                                        $img = Article_images::where(['id' => $article->id])->pluck('name')[0];
+                                                        $img = Article_images::where(['id' => $article->id])->value('name');
                                                         ?>
                                                         <a class="ay az ba bb bc bd be bf bg bh bi bj bk bl bm"
                                                             rel="noopener follow"

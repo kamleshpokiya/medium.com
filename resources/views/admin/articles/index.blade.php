@@ -91,7 +91,7 @@
                                             $promo = [];
                                             $tags = explode(',', $article->tag_id);
                                             foreach ($tags as $val) {
-                                                $promo[] = Tag::where(['id' => $val])->pluck('name')[0];
+                                                $promo[] = Tag::where(['id' => $val])->value('name');
                                             }
                                             $tag_vals = implode(', ', $promo);
                                             ?>

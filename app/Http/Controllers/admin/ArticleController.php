@@ -42,31 +42,21 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        // echo '<pre>';
-
-        // print_r($request->all());
-        // print_r($request->tag_id);
-        // // exit;
         $request->validate([
             'article_name' => 'required',
             'description' => 'required',
             'tag_id' => 'required',
-            'image' => 'mimes:jpeg,jpg,png,gif|required|max:2000',
-            // 'image' => 'required',
+            // 'image' => 'mimes:jpeg,jpg,png,gif|required|max:2000',
+            'image' => 'required',
         ]);
 
         $files = [];
         $uploadStatus = [];
-        // DB::enableQueryLog();
-        // $items = Article::create($request->all());
         $article = new Article;
         $article->name = $request->article_name;
         $article->description = $request->description;
         $article->tag_id  = implode(',', $request->tag_id);
-
         $article->save();
-        //         $query = DB::getQueryLog();
-        // dd($query);
         $article_id = $article->id;
         if ($request->hasfile('image')) {
             foreach ($request->file('image') as $file) {
@@ -127,20 +117,15 @@ class ArticleController extends Controller
             'article_name' => 'required',
             'description' => 'required',
             'tag_id' => 'required',
-            // 'image' => 'mimes:jpeg,jpg,png,gif|required|max:2000',
             'image' => 'required',
         ]);
         $article = Article::find($id);
         $files = [];
         $uploadStatus = [];
-        // DB::enableQueryLog();
-        // $items = Article::create($request->all());
         $article->name = $request->article_name;
         $article->description = $request->description;
         $article->tag_id  = implode(',', $request->tag_id);
         $article->save();
-        //         $query = DB::getQueryLog();
-        // dd($query);
         if ($request->hasfile('image')) {
             foreach ($request->file('image') as $file) {
                 $name = time() . rand(1, 100) . '.' . $file->extension();
@@ -174,7 +159,6 @@ class ArticleController extends Controller
             $article = Article::findOrFail($id);
             $article->is_delete = 1;
             $article->save();
-            // $article->delete();
             return redirect()->route('articles.index')
                 ->with('success', 'Article has been deleted successfully');
         }
